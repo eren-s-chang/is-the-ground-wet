@@ -1,0 +1,14 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+torch>=2.9,<2.12
+torchvision>=0.24,<0.27
+pillow>=11,<13
+requests>=2.32.3,<3
+numpy>=1.26,<2
+opencv-python-headless>=4.10,<5
+huggingface_hub>=1.1,<2
+einops>=0.8
+fairscale>=0.4.13
+fvcore>=0.1.5.post20221221
+pycocotools>=2.0.10
+psutil>=5.9

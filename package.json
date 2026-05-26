@@ -1,0 +1,43 @@
+{
+  "name": "is-the-ground-wet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "vite --host 0.0.0.0",
+    "dev:server": "node --watch server/index.js",
+    "dev:inference": "docker compose up inference",
+    "dev:inference:local": "PYTORCH_ENABLE_MPS_FALLBACK=1 MODEL_PROVIDER=pavement-wetdry MODEL_ID=pavement-wetdry python -m uvicorn inference.app:app --host 0.0.0.0 --port 9000",
+    "label:wetness": "python inference/label_wetness.py",
+    "build:centroids": "python inference/build_centroids.py",
+    "classify:pavement": "python inference/classify_pavement_folder.py",
+    "train:pavement": "python inference/train_pavement_classifier.py",
+    "dev:all": "concurrently \"npm run dev:server\" \"npm run dev:client\" \"npm run dev:inference\"",
+    "build": "tsc --noEmit && vite build",
+    "start": "node server/index.js",
+    "test": "node --test",
+    "verify": "npm run test && npm run build"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "@vitejs/plugin-react": "latest",
+    "express": "latest",
+    "leaflet": "^1.9.4",
+    "leaflet.heat": "^0.2.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-leaflet": "^4.2.1",
+    "tailwindcss": "^4.3.0",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/leaflet": "^1.9.12",
+    "@types/leaflet.heat": "^0.2.3",
+    "concurrently": "latest"
+  }
+}

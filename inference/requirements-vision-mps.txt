@@ -1,0 +1,15 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+torch>=2.9,<2.12
+torchvision>=0.24,<0.27
+pillow>=11,<13
+requests>=2.32.3,<3
+numpy>=1.26,<2
+opencv-python-headless>=4.10,<5
+transformers>=4.57,<5
+sentencepiece>=0.2
+protobuf>=5
+accelerate>=1.12
+safetensors>=0.6
+qwen-vl-utils>=0.0.11
+huggingface_hub>=0.34,<1

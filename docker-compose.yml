@@ -1,0 +1,22 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8787:8787"
+    environment:
+      PORT: "8787"
+      VISION_INFERENCE_URL: "http://inference:9000/inference/wetness"
+      CORS_ORIGIN: "http://localhost:8787"
+    depends_on:
+      - inference
+
+  inference:
+    build: ./inference
+    ports:
+      - "9000:9000"
+    environment:
+      MODEL_ID: "vit_b"
+      MODEL_CHECKPOINT: "/app/sam_vit_b_01ec64.pth"
+      SAM_POINTS_PER_SIDE: "8"
+      SAM_MAX_IMAGE_SIZE: "384"
+      SAM_MIN_MASK_REGION_AREA: "800"
